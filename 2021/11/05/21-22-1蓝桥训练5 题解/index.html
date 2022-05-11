@@ -1,0 +1,632 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Bruce12138">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="A 算法训练 乘积最大  资源限制 ​		时间限制：1.0s  内存限制：256.0MB  问题描述 今年是国际数学联盟确定的“2000——世界数学年”，又恰逢我国著名数学家华罗庚先生诞辰90周年。在华罗庚先生的家乡江苏金坛，组织了一场别开生面的数学智力竞赛的活动，你的一个好朋友XZ也有幸得以参加。活动中，主持人给所有参加活动的选手出了这样一道题目： 设有一个长度为N的数字串，要求选手使用K个乘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="21-22-1蓝桥训练5 题解">
+<meta property="og:url" content="http://example.com/2021/11/05/21-22-1%E8%93%9D%E6%A1%A5%E8%AE%AD%E7%BB%835%20%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Bruce12138&#39;s Blog">
+<meta property="og:description" content="A 算法训练 乘积最大  资源限制 ​		时间限制：1.0s  内存限制：256.0MB  问题描述 今年是国际数学联盟确定的“2000——世界数学年”，又恰逢我国著名数学家华罗庚先生诞辰90周年。在华罗庚先生的家乡江苏金坛，组织了一场别开生面的数学智力竞赛的活动，你的一个好朋友XZ也有幸得以参加。活动中，主持人给所有参加活动的选手出了这样一道题目： 设有一个长度为N的数字串，要求选手使用K个乘">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-11-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-11T01:34:02.293Z">
+<meta property="article:author" content="Bruce12138">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>21-22-1蓝桥训练5 题解 - Bruce12138&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Bruce12138</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/icpc.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="21-22-1蓝桥训练5 题解">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-05 00:00" pubdate>
+        November 5, 2021 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      50 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">21-22-1蓝桥训练5 题解</h1>
+            
+            <div class="markdown-body">
+              <h2 id="a-算法训练-乘积最大"><a class="markdownIt-Anchor" href="#a-算法训练-乘积最大"></a> A 算法训练 乘积最大</h2>
+<h3 id="资源限制"><a class="markdownIt-Anchor" href="#资源限制"></a> 资源限制</h3>
+<p>​		时间限制：1.0s  内存限制：256.0MB</p>
+<h3 id="问题描述"><a class="markdownIt-Anchor" href="#问题描述"></a> <strong>问题描述</strong></h3>
+<p>今年是国际数学联盟确定的“2000——世界数学年”，又恰逢我国著名数学家华罗庚先生诞辰90周年。在华罗庚先生的家乡江苏金坛，组织了一场别开生面的数学智力竞赛的活动，你的一个好朋友XZ也有幸得以参加。活动中，主持人给所有参加活动的选手出了这样一道题目：</p>
+<p>设有一个长度为N的数字串，要求选手使用K个乘号将它分成K+1个部分，找出一种分法，使得这K+1个部分的乘积能够为最大。</p>
+<p>同时，为了帮助选手能够正确理解题意，主持人还举了如下的一个例子：</p>
+<p>有一个数字串：312， 当N=3，K=1时会有以下两种分法：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mo>∗</mo><mn>12</mn><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">3*12=12
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">2</span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>31</mn><mo>∗</mo><mn>2</mn><mo>=</mo><mn>62</mn></mrow><annotation encoding="application/x-tex">31*2=62
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">2</span></span></span></span></span></p>
+<p>这时，符合题目要求的结果是：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>31</mn><mo>∗</mo><mn>2</mn><mo>=</mo><mn>62</mn></mrow><annotation encoding="application/x-tex">31*2=62
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">2</span></span></span></span></span></p>
+<p>现在，请你帮助你的好朋友XZ设计一个程序，求得正确的答案。</p>
+<h3 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> <strong>输入格式</strong></h3>
+<p>第一行共有2个自然数N，K（6≤N≤40，1≤K≤6）<br />
+　　第二行是一个长度为N的数字串。</p>
+<h3 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> <strong>输出格式</strong></h3>
+<p>输出所求得的最大乘积（一个自然数）。</p>
+<h3 id="样例输入"><a class="markdownIt-Anchor" href="#样例输入"></a> <strong>样例输入</strong></h3>
+<p>4 2<br />
+1231</p>
+<h3 id="样例输出"><a class="markdownIt-Anchor" href="#样例输出"></a> <strong>样例输出</strong></h3>
+<p>62</p>
+<h3 id="思路解析"><a class="markdownIt-Anchor" href="#思路解析"></a> <strong>思路解析</strong></h3>
+<p>​		这题我用dp写的，有聚聚说爆搜也能过，没试过。</p>
+<p>​		用dp数组存储当前状态，dp[i][j]表示长度为i+1的字符串填入j个乘号所得的最大值。</p>
+<p>​		当j==0时，所求得的数就是给出的字符串。</p>
+<p>​		长度为i的字符串填入j个乘号所得值 等于 长度为p的字符串（p小于i）填入j-1个乘号所得值 乘以 p+1到i的字符串代表的数。自定义函数ll f(int u,int v)的作用是将a[u]~a[v]的这一部分元素转换成整数。</p>
+<h3 id="ac代码"><a class="markdownIt-Anchor" href="#ac代码"></a> <strong>AC代码</strong></h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ll long long</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">char</span> ch;<br><span class="hljs-type">int</span> n,k,a[<span class="hljs-number">50</span>];<br>ll dp[<span class="hljs-number">50</span>][<span class="hljs-number">10</span>],ret;<br><span class="hljs-function">ll <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-type">int</span> u,<span class="hljs-type">int</span> v)</span></span><br><span class="hljs-function"></span>&#123;<br>	ret=<span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=u;i&lt;=v;i++)<br>	&#123;<br>		ret*=<span class="hljs-number">10</span>;<br>		ret+=a[i];<br>	&#125;<br>	<span class="hljs-keyword">return</span> ret;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	cin&gt;&gt;n&gt;&gt;k;<br>	<span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(dp));<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>	&#123;<br>		cin&gt;&gt;ch;<br>		a[i]=ch-<span class="hljs-string">&#x27;0&#x27;</span>;<br>		dp[i][<span class="hljs-number">0</span>]=<span class="hljs-built_in">f</span>(<span class="hljs-number">0</span>,i);<br>	&#125;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;n;i++)<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=k;j++)<br>			<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> p=<span class="hljs-number">0</span>;p&lt;i;p++)<br>				dp[i][j]=<span class="hljs-built_in">max</span>(dp[i][j],dp[p][j<span class="hljs-number">-1</span>]*<span class="hljs-built_in">f</span>(p+<span class="hljs-number">1</span>,i));<br>	cout&lt;&lt;dp[n<span class="hljs-number">-1</span>][k]&lt;&lt;endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div style="page-break-after:always"></div>
+<h2 id="b-算法提高-金陵十三钗"><a class="markdownIt-Anchor" href="#b-算法提高-金陵十三钗"></a> B 算法提高 金陵十三钗</h2>
+<h3 id="资源限制-2"><a class="markdownIt-Anchor" href="#资源限制-2"></a> 资源限制</h3>
+<p>​		时间限制：1.0s  内存限制：256.0MB</p>
+<h3 id="问题描述-2"><a class="markdownIt-Anchor" href="#问题描述-2"></a> 问题描述</h3>
+<p>在电影《金陵十三钗》中有十二个秦淮河的女人要自我牺牲代替十二个女学生去赴日本人的死亡宴会。为了不让日本人发现，自然需要一番乔装打扮。但由于天生材质的原因，每个人和每个人之间的相似度是不同的。由于我们这是编程题，因此情况就变成了金陵n钗。给出n个女人和n个学生的相似度矩阵，求她们之间的匹配所能获得的最大相似度。<br />
+　　所谓相似度矩阵是一个n*n的二维数组like[i][j]。其中i,j分别为女人的编号和学生的编号，皆从0到n-1编号。like[i][j]是一个0到100的整数值，表示第i个女人和第j个学生的相似度，值越大相似度越大，比如0表示完全不相似，100表示百分之百一样。每个女人都需要找一个自己代替的女学生。<br />
+　　最终要使两边一一配对，形成一个匹配。请编程找到一种匹配方案，使各对女人和女学生之间的相似度之和最大。</p>
+<h3 id="输入格式-2"><a class="markdownIt-Anchor" href="#输入格式-2"></a> 输入格式</h3>
+<p>第一行一个正整数n表示有n个秦淮河女人和n个女学生<br />
+　　接下来n行给出相似度，每行n个0到100的整数，依次对应二维矩阵的n行n列。</p>
+<h3 id="输出格式-2"><a class="markdownIt-Anchor" href="#输出格式-2"></a> 输出格式</h3>
+<p>仅一行，一个整数，表示可获得的最大相似度。</p>
+<h3 id="样例输入-2"><a class="markdownIt-Anchor" href="#样例输入-2"></a> 样例输入</h3>
+<p>4<br />
+97 91 68 14<br />
+8 33 27 92<br />
+36 32 98 53<br />
+73 7 17 82</p>
+<h3 id="样例输出-2"><a class="markdownIt-Anchor" href="#样例输出-2"></a> 样例输出</h3>
+<p>354</p>
+<h3 id="数据规模和约定"><a class="markdownIt-Anchor" href="#数据规模和约定"></a> 数据规模和约定</h3>
+<p>对于70%的数据，n&lt;=10<br />
+　　对于100%的数据，n&lt;=13</p>
+<h3 id="样例说明"><a class="markdownIt-Anchor" href="#样例说明"></a> 样例说明</h3>
+<p>最大相似度为91+92+93+73=354</p>
+<h3 id="思路解析-2"><a class="markdownIt-Anchor" href="#思路解析-2"></a> 思路解析</h3>
+<p>状压dp题，最开始用dfs写，最后3个样例t了。可以考虑记忆化dfs或者dp</p>
+<p>因为最多只有13个学生，每个学生用一位二进制表示，可以压缩成一个整数<br />
+例如1010 （大-&gt;小） 可以表示配对了第二个第四个学生<br />
+将学生的下标从0开始计数比较方便，这样1&lt;&lt; i就代表第i个学生了。<br />
+可以根据配对了几个学生选择第几个女人来配对，这样就能降一维了。<br />
+例如：1010配对了两个学生，可以由第一个女人和第二个学生配对转移过来，也可以由第一个女人和第四个学生转移过来</p>
+<h3 id="ac代码-2"><a class="markdownIt-Anchor" href="#ac代码-2"></a> AC代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> n,t,tmp,a[<span class="hljs-number">15</span>][<span class="hljs-number">15</span>],dp[<span class="hljs-number">10005</span>];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	cin&gt;&gt;n;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)<br>			cin&gt;&gt;a[i][j];<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;(<span class="hljs-number">1</span>&lt;&lt;n);i++)<br>    &#123;<br>        tmp=i,t=<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">while</span>(tmp) <br>        &#123;<br>            t++;<br>            tmp-=tmp&amp;-tmp;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)<br>            <span class="hljs-keyword">if</span>(i&amp;(<span class="hljs-number">1</span>&lt;&lt;j))<br>                dp[i]=<span class="hljs-built_in">max</span>(dp[i],dp[i^(<span class="hljs-number">1</span>&lt;&lt;j)]+a[t][j]);<br>    &#125;<br>    cout&lt;&lt;dp[(<span class="hljs-number">1</span>&lt;&lt;n)<span class="hljs-number">-1</span>]&lt;&lt;endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div style="page-break-after:always"></div>
+<h2 id="c-算法提高-上帝造题五分钟"><a class="markdownIt-Anchor" href="#c-算法提高-上帝造题五分钟"></a> C 算法提高 上帝造题五分钟</h2>
+<h3 id="资源限制-3"><a class="markdownIt-Anchor" href="#资源限制-3"></a> 资源限制</h3>
+<p>​		时间限制：1.0s  内存限制：256.0MB</p>
+<h3 id="问题描述-3"><a class="markdownIt-Anchor" href="#问题描述-3"></a> 问题描述</h3>
+<p>第一分钟，上帝说：要有题。于是就有了L，Y，M，C<br />
+　　第二分钟，LYC说：要有向量。于是就有了长度为n写满随机整数的向量<br />
+　　第三分钟，YUHCH说：要有查询。于是就有了Q个查询，查询向量的一段区间内元素的最小值<br />
+　　第四分钟，MZC说：要有限。于是就有了数据范围<br />
+　　第五分钟，CS说：要有做题的。说完众神一哄而散，留你来收拾此题</p>
+<h3 id="输入格式-3"><a class="markdownIt-Anchor" href="#输入格式-3"></a> 输入格式</h3>
+<p>第一行两个正整数n和Q，表示向量长度和查询个数<br />
+　　接下来一行n个整数，依次对应向量中元素：a[0]，a[1]，…，a[n-1]<br />
+　　接下来Q行，每行两个正整数lo，hi，表示查询区间[lo, hi]中的最小值，即min(a[lo],a[lo+1],…,a[hi])。</p>
+<h3 id="输出格式-3"><a class="markdownIt-Anchor" href="#输出格式-3"></a> 输出格式</h3>
+<p>共Q行，依次对应每个查询的结果，即向量在对应查询区间中的最小值。</p>
+<h3 id="样例输入-3"><a class="markdownIt-Anchor" href="#样例输入-3"></a> 样例输入</h3>
+<p>7 4<br />
+1 -1 -4 8 1 2 -7<br />
+0 0<br />
+1 3<br />
+4 5<br />
+0 6</p>
+<h3 id="样例输出-3"><a class="markdownIt-Anchor" href="#样例输出-3"></a> 样例输出</h3>
+<p>1<br />
+-4<br />
+1<br />
+-7</p>
+<h3 id="样例说明-2"><a class="markdownIt-Anchor" href="#样例说明-2"></a> 样例说明</h3>
+<p>第一个查询[0,0]表示求min{a[0]}=min{1}=1<br />
+　　第二个查询[1,3]表示求min{a[1],a[2],a[3]}=min{-1,-4,8}=-4<br />
+　　第三个查询[4,5]表示求min{a[4],a[5]}=min{1,2}=1<br />
+　　第四个查询[0,6]表示查询整个向量，求min{a[0…6]}=min{1,-1,-4,8,1,2,-7}=-7</p>
+<h3 id="数据规模和约定-2"><a class="markdownIt-Anchor" href="#数据规模和约定-2"></a> 数据规模和约定</h3>
+<p>1&lt;=n&lt;=1984，1&lt;=Q&lt;=1988，向量中随机整数的绝对值不超过1,000</p>
+<h3 id="思路解析-3"><a class="markdownIt-Anchor" href="#思路解析-3"></a> 思路解析</h3>
+<p>​		数据规模太小了，直接暴力就过了。对于每一组输入的lo和hi，遍历a[lo]~a[hi]中的所有元素，取得最小的元素。</p>
+<p>​		当数据规模大起来，并且要对元素进行修改的时候，就要涉及到一种高级数据结构——线段树。这里不做提及，毕竟杀鸡不用牛刀。</p>
+<h3 id="ac代码-3"><a class="markdownIt-Anchor" href="#ac代码-3"></a> AC代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> n,m,lo,hi,ans,a[<span class="hljs-number">2000</span>];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	cin&gt;&gt;n&gt;&gt;m;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>		cin&gt;&gt;a[i];<br>	<span class="hljs-keyword">while</span>(m--)<br>	&#123;<br>		cin&gt;&gt;lo&gt;&gt;hi;<br>		ans=<span class="hljs-number">2005</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=lo;i&lt;=hi;i++)<br>			ans=<span class="hljs-built_in">min</span>(ans,a[i]);<br>		cout&lt;&lt;ans&lt;&lt;endl;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div style="page-break-after:always"></div>
+<h2 id="d-算法训练-c-calculations"><a class="markdownIt-Anchor" href="#d-算法训练-c-calculations"></a> D 算法训练 C*++ Calculations</h2>
+<h3 id="资源限制-4"><a class="markdownIt-Anchor" href="#资源限制-4"></a> 资源限制</h3>
+<p>​		时间限制：2.0s  内存限制：64.0MB</p>
+<h3 id="问题描述-4"><a class="markdownIt-Anchor" href="#问题描述-4"></a> 问题描述</h3>
+<p>C*<ins>语言和C</ins>语言非常相似，然而C*<ins>的程序有时会出现意想不到的结果。比如像这样的算术表达式：<br />
+　　表达式=基本式 / 表达式+基本式 / 表达式-基本式<br />
+　　基本式=增量 / 系数*增量<br />
+　　增量=a</ins> / <ins>a<br />
+　　系数=0/1/2/……/1000<br />
+　　如“5*a</ins>-3*<ins>a+a</ins>”是合法的C*<ins>表达式。<br />
+　　计算这样的表达式的值的方法：首先是每个基本式进行计算，然后按照正常的算术运算法则计算。如果一个基本式包含“a</ins>”，则先进行乘法运算再使变量a权值+1；如果一个基本式包含“++a”，则先使变量a权值+1再进行乘法运算。<br />
+　　然而基本式可以按任意顺序计算，这就是为什么计算结果是完全无法预料的。<br />
+　　你的任务就是去找到最大的可能结果。</p>
+<p>第一行，一个整数n，表示变量a的初始值</p>
+<p>​		第二行，一个合法的C*++表达式。</p>
+<p>​		共一行，一个整数ans，表示最大可能结果。</p>
+<h3 id="输入格式-4"><a class="markdownIt-Anchor" href="#输入格式-4"></a> 输入格式</h3>
+<p>input 1:<br />
+　　1<br />
+　　5*a+±3*<ins>a+a</ins><br />
+　　input 2:<br />
+　　3<br />
+　　a+++++a</p>
+<h3 id="输出格式-4"><a class="markdownIt-Anchor" href="#输出格式-4"></a> 输出格式</h3>
+<p>output 1:<br />
+　　11<br />
+　　output 2:<br />
+　　8</p>
+<h3 id="数据规模和约定-3"><a class="markdownIt-Anchor" href="#数据规模和约定-3"></a> 数据规模和约定</h3>
+<p>对于20%的数据，表达式长度&lt;=20。<br />
+　　另有20%的数据，满足n&gt;=0。<br />
+　　对于100%的数据，-1000&lt;=n&lt;=1000，表达式长度&lt;=10000。<br />
+　　注意表达式开头可能有负号！</p>
+<h3 id="思路解析-4"><a class="markdownIt-Anchor" href="#思路解析-4"></a> 思路解析</h3>
+<p>​		模拟，增量表达式只有a<ins>和</ins>a两种，将所有的系数提出来排序，从小到大进行模拟运算即可。注意，++a要先给变量a变大，后进行乘法运算。</p>
+<p>​		ps：Codeforces Problemset 39A~</p>
+<h3 id="ac代码-4"><a class="markdownIt-Anchor" href="#ac代码-4"></a> AC代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span> </span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">bool</span> flag;<br><span class="hljs-type">int</span> a,n,k,r,ans;<br><span class="hljs-type">int</span> w[<span class="hljs-number">10011</span>],tmp;<br><span class="hljs-type">char</span> s[<span class="hljs-number">100011</span>];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d\n%s&quot;</span>,&amp;a,s+<span class="hljs-number">1</span>);<br>	n=<span class="hljs-built_in">strlen</span>(s+<span class="hljs-number">1</span>);<br>	<span class="hljs-keyword">if</span>(s[<span class="hljs-number">1</span>]!=<span class="hljs-string">&#x27;-&#x27;</span>)<br>	&#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=n+<span class="hljs-number">1</span>;i&gt;<span class="hljs-number">1</span>;i--)<br>			s[i]=s[i<span class="hljs-number">-1</span>];<br>		s[<span class="hljs-number">1</span>]=<span class="hljs-string">&#x27;+&#x27;</span>;<br>		n++;<br>	&#125;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i+=<span class="hljs-number">3</span>)<br>	&#123;<br>		<span class="hljs-keyword">if</span> (s[i++]==<span class="hljs-string">&#x27;+&#x27;</span>)<br>			k=<span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">else</span><br>			k=<span class="hljs-number">-1</span>;<br>		r=<span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">while</span> (i&lt;=n&amp;&amp;<span class="hljs-string">&#x27;0&#x27;</span>&lt;=s[i]&amp;&amp;s[i]&lt;=<span class="hljs-string">&#x27;9&#x27;</span>)<br>			(r*=<span class="hljs-number">10</span>)+=s[i++]<span class="hljs-number">-48</span>;<br>		<span class="hljs-keyword">if</span> (s[i]==<span class="hljs-string">&#x27;*&#x27;</span>)<br>			i++;<br>		<span class="hljs-keyword">else</span><br>			r=<span class="hljs-number">1</span>;<br>		w[++tmp]=(k*=r);<br>		ans+=(a-(s[i]==<span class="hljs-string">&#x27;a&#x27;</span>))*k;<br>	&#125;<br>	<span class="hljs-built_in">sort</span>(w+<span class="hljs-number">1</span>,w+tmp+<span class="hljs-number">1</span>);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=tmp;i++)<br>		ans+=i*w[i];<br>	cout&lt;&lt;ans&lt;&lt;endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div style="page-break-after:always"></div>
+<h2 id="e-算法训练-特殊的数字四十"><a class="markdownIt-Anchor" href="#e-算法训练-特殊的数字四十"></a> E 算法训练 特殊的数字四十</h2>
+<h3 id="资源限制-5"><a class="markdownIt-Anchor" href="#资源限制-5"></a> 资源限制</h3>
+<p>​		时间限制：1.0s  内存限制：256.0MB</p>
+<h3 id="问题描述-5"><a class="markdownIt-Anchor" href="#问题描述-5"></a> 问题描述</h3>
+<p>1234是一个非常特殊的四位数，因为它的各位数之和为10，编程求所有这样的四位十进制数。</p>
+<h3 id="输出格式-5"><a class="markdownIt-Anchor" href="#输出格式-5"></a> 输出格式</h3>
+<p>按从小到大的顺序输出满足条件的四位十进制数。每个数字占用一行。</p>
+<h3 id="思路解析-5"><a class="markdownIt-Anchor" href="#思路解析-5"></a> 思路解析</h3>
+<p>本题要求所有满足各位和为10的四位数，所以遍历所有的4位数，如果4位和为10则成立，输出。</p>
+<p>另外可以按位去推，3层循环也可以推出来，这里不做展示。</p>
+<h3 id="ac代码-5"><a class="markdownIt-Anchor" href="#ac代码-5"></a> AC代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> tmp,sum;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1000</span>;i&lt;<span class="hljs-number">10000</span>;i++)<br>	&#123;<br>		tmp=i;<br>		sum=<span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">while</span>(tmp)<br>		&#123;<br>			sum+=tmp%<span class="hljs-number">10</span>;<br>			tmp/=<span class="hljs-number">10</span>;<br>		&#125;<br>		<span class="hljs-keyword">if</span>(sum==<span class="hljs-number">10</span>)<br>			cout&lt;&lt;i&lt;&lt;endl;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<div style="page-break-after:always"></div>
+<h2 id="f-算法提高-五次方数"><a class="markdownIt-Anchor" href="#f-算法提高-五次方数"></a> F 算法提高 五次方数</h2>
+<h3 id="资源限制-6"><a class="markdownIt-Anchor" href="#资源限制-6"></a> 资源限制</h3>
+<p>​		时间限制：1.0s  内存限制：256.0MB</p>
+<h3 id="问题描述-6"><a class="markdownIt-Anchor" href="#问题描述-6"></a> 问题描述</h3>
+<p>对一个数十进制表示时的每一位数字乘五次方再求和，会得到一个数的五次方数<br />
+　　例如：1024的五次方数为1+0+32+1024=1057<br />
+　　有这样一些神奇的数，它的五次方数就是它自己，而且这样的数竟然只有有限多个<br />
+　　从小到大输出所有这样的数</p>
+<h3 id="输出格式-6"><a class="markdownIt-Anchor" href="#输出格式-6"></a> 输出格式</h3>
+<p>每个数独立一行输出</p>
+<h3 id="样例输出-4"><a class="markdownIt-Anchor" href="#样例输出-4"></a> 样例输出</h3>
+<p>10<br />
+200<br />
+3000</p>
+<h3 id="思路解析-6"><a class="markdownIt-Anchor" href="#思路解析-6"></a> 思路解析</h3>
+<p>首先，我们知道9的五次方</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>9</mn><mn>5</mn></msup><mo>=</mo><mn>59</mn><mo separator="true">,</mo><mn>049</mn></mrow><annotation encoding="application/x-tex">9^5=59,049
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8641079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">9</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">5</span><span class="mord">9</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mord">4</span><span class="mord">9</span></span></span></span></span></p>
+<p>设位数为n，由题意得到</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mi>n</mi></msup><mo>≤</mo><msup><mn>9</mn><mn>5</mn></msup><mo>∗</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">10^n≤9^5*n
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.850362em;vertical-align:-0.13597em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8641079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">9</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span></span></p>
+<p>每次逐渐增加位数n，推出 n最大为6</p>
+<p>所以从0开始遍历到1e6+5即可得到所有的答案，但是本题答案错了，没有包含0和1这两项。</p>
+<h3 id="ac代码-6"><a class="markdownIt-Anchor" href="#ac代码-6"></a> AC代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> tmp,k,sum;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">1000005</span>;i++)<br>	&#123;<br>		tmp=i,sum=<span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">while</span>(tmp)<br>		&#123;<br>			k=tmp%<span class="hljs-number">10</span>;<br>			sum+=<span class="hljs-built_in">pow</span>(k,<span class="hljs-number">5</span>);<br>			tmp/=<span class="hljs-number">10</span>;<br>			<span class="hljs-keyword">if</span>(sum&gt;i)<br>				<span class="hljs-keyword">break</span>;<br>		&#125;<br>		<span class="hljs-keyword">if</span>(sum==i)<br>			cout&lt;&lt;i&lt;&lt;endl;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125; <br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/10/hello-world/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
