@@ -1,0 +1,490 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Bruce12138">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="长沙学院CCSU2022夏季校赛-题解A. 小贪一手题目描述给定整数$n,x,y$请问$[1,n]$范围内的最大正整数$k$满足$k%x&#x3D;y$ 输入描述第一行一个正整数$t$，表示有$t$组数据 接下来$t$行，每行三个正整数$x,y,n$，如题面所述 输出描述对于每个测试案例，打印答案——最大的非负整数$k$，使$0\le k\le n$ 且 $k\mod x&#x3D;y$。可以保证">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bruce12138&#39;s Blog">
+<meta property="og:url" content="http://example.com/2022/05/11/%E9%95%BF%E6%B2%99%E5%AD%A6%E9%99%A2CCSU2022%E5%A4%8F%E5%AD%A3%E6%A0%A1%E8%B5%9B-%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Bruce12138&#39;s Blog">
+<meta property="og:description" content="长沙学院CCSU2022夏季校赛-题解A. 小贪一手题目描述给定整数$n,x,y$请问$[1,n]$范围内的最大正整数$k$满足$k%x&#x3D;y$ 输入描述第一行一个正整数$t$，表示有$t$组数据 接下来$t$行，每行三个正整数$x,y,n$，如题面所述 输出描述对于每个测试案例，打印答案——最大的非负整数$k$，使$0\le k\le n$ 且 $k\mod x&#x3D;y$。可以保证">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://uploadfiles.nowcoder.com/images/20220426/322212_1650968118981/AE61F053444D9D31264940EF73ECBAD8">
+<meta property="article:published_time" content="2022-05-11T00:19:36.443Z">
+<meta property="article:modified_time" content="2022-04-28T11:47:12.221Z">
+<meta property="article:author" content="Bruce12138">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://uploadfiles.nowcoder.com/images/20220426/322212_1650968118981/AE61F053444D9D31264940EF73ECBAD8">
+  
+  
+  <title>Bruce12138&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-11 08:19" pubdate>
+        May 11, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      36 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            <div class="markdown-body">
+              <h1 id="长沙学院CCSU2022夏季校赛-题解"><a href="#长沙学院CCSU2022夏季校赛-题解" class="headerlink" title="长沙学院CCSU2022夏季校赛-题解"></a>长沙学院CCSU2022夏季校赛-题解</h1><h2 id="A-小贪一手"><a href="#A-小贪一手" class="headerlink" title="A. 小贪一手"></a>A. 小贪一手</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定整数$n,x,y$请问$[1,n]$范围内的最大正整数$k$满足$k%x&#x3D;y$</p>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><p>第一行一个正整数$t$，表示有$t$组数据</p>
+<p>接下来$t$行，每行三个正整数$x,y,n$，如题面所述</p>
+<h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h3><p>对于每个测试案例，打印答案——最大的非负整数$k$，使$0\le k\le n$ 且 $k\mod x&#x3D;y$。可以保证答案总是存在的。</p>
+<h3 id="数据规模与约束"><a href="#数据规模与约束" class="headerlink" title="数据规模与约束"></a>数据规模与约束</h3><p>$1\le t\le5\times10^4 $</p>
+<p>$2\le x\le 10^9$</p>
+<p>$0\le y \lt x$</p>
+<p>$y\le n\le 10^9$</p>
+<h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight basic"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">7</span><br><span class="hljs-symbol">7 </span><span class="hljs-number">5</span> <span class="hljs-number">12345</span><br><span class="hljs-symbol">5 </span><span class="hljs-number">0</span> <span class="hljs-number">4</span><br><span class="hljs-symbol">10 </span><span class="hljs-number">5</span> <span class="hljs-number">15</span><br><span class="hljs-symbol">17 </span><span class="hljs-number">8</span> <span class="hljs-number">54321</span><br><span class="hljs-symbol">499999993 </span><span class="hljs-number">9</span> <span class="hljs-number">1000000000</span><br><span class="hljs-symbol">10 </span><span class="hljs-number">5</span> <span class="hljs-number">187</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">0</span> <span class="hljs-number">999999999</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs dns"><span class="hljs-number">12339</span><br><span class="hljs-number">0</span><br><span class="hljs-number">15</span><br><span class="hljs-number">54306</span><br><span class="hljs-number">999999995</span><br><span class="hljs-number">185</span><br><span class="hljs-number">999999998</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>本题来自于<a target="_blank" rel="noopener" href="https://codeforces.com/contest/1374">Codeforces Round #653 (Div. 3)</a>A题，指路<a target="_blank" rel="noopener" href="https://codeforces.com/contest/1374/problem/A">1374A</a></p>
+<p>贪心，我们要使得  $k\mod x &#x3D; y$ ，且 $k$ 最大。那么 $k$ 满足 $k&#x3D;t<em>x+y$ ,所以 $(k-y)%x&#x3D;0$ 。我们令 $m&#x3D;n-y$ ，题目就成了在 $[0,m]$ 范围内找最大的 $x$ 的倍数。$m$ 是 $k$  的 $\frac{m}{k}$ 倍，对它进行取整得到倍数 $t$ ，然后输出 $t</em>x+y$ 即为答案。数据规模在 $10^9$ 范围内，所以使用int型即可，不用考虑数据溢出问题。</p>
+<h3 id="STD"><a href="#STD" class="headerlink" title="STD"></a>STD</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> t,n,x,y;<br>	<span class="hljs-keyword">for</span>(cin&gt;&gt;t;t--;cout&lt;&lt;(n-y)/x*x+y&lt;&lt;<span class="hljs-string">&#x27;\n&#x27;</span>)<br>		cin&gt;&gt;x&gt;&gt;y&gt;&gt;n;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="B-A-B-Problem-very-easy"><a href="#B-A-B-Problem-very-easy" class="headerlink" title="B. A+B Problem (very easy)"></a>B. A+B Problem (very easy)</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>人之初，A+B。你需要对给定字符串计算出答案，并用英文的形式输出。具体操作见样例，题目输入字符串保证不会出现除了小写英文字母、加法符号‘+’、连词符’-‘以外的任何符号。</p>
+<h3 id="输入描述-1"><a href="#输入描述-1" class="headerlink" title="输入描述"></a>输入描述</h3><p>第一行一个整数T，表示数据的组数。</p>
+<p>接下来每行一个字符串，表示需要进行计算的式子。</p>
+<h3 id="输出描述-1"><a href="#输出描述-1" class="headerlink" title="输出描述"></a>输出描述</h3><p>T行，每行一个字符串表示计算得到的答案</p>
+<h3 id="数据规模与约束-1"><a href="#数据规模与约束-1" class="headerlink" title="数据规模与约束"></a>数据规模与约束</h3><p>T≤10，所有给定字符串长度不超过100，参与加法的数字最大不大于99</p>
+<h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-number">6</span><br><span class="hljs-literal">zero</span><br><span class="hljs-literal">one</span>+<span class="hljs-literal">two</span>+<span class="hljs-literal">three</span>+<span class="hljs-literal">four</span>+<span class="hljs-literal">five</span>+<span class="hljs-literal">six</span>+<span class="hljs-literal">seven</span>+<span class="hljs-literal">eight</span>+<span class="hljs-literal">nine</span>+<span class="hljs-literal">ten</span><br>eleven+twelve+thirteen+fourteen+fifteen+sixteen<br>seventeen+eighteen+nineteen<br>twenty+thirty+forty+fifty+sixty+seventy+eighty+ninety<br>ninety-<span class="hljs-literal">nine</span>+ninety-<span class="hljs-literal">nine</span>+ninety-<span class="hljs-literal">nine</span>+ninety-<span class="hljs-literal">nine</span>+ninety-<span class="hljs-literal">nine</span>+ninety-<span class="hljs-literal">nine</span>+ninety-<span class="hljs-literal">nine</span>+ninety-<span class="hljs-literal">nine</span>+<span class="hljs-literal">two</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs">0<br>55<br>81<br>54<br>440<br>794<br></code></pre></td></tr></table></figure>
+
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">zero</span> <span class="hljs-number">0</span><br><span class="hljs-attribute">one</span> <span class="hljs-number">1</span><br><span class="hljs-attribute">two</span> <span class="hljs-number">2</span><br><span class="hljs-attribute">three</span> <span class="hljs-number">3</span><br><span class="hljs-attribute">four</span> <span class="hljs-number">4</span><br><span class="hljs-attribute">five</span> <span class="hljs-number">5</span><br><span class="hljs-attribute">six</span> <span class="hljs-number">6</span><br><span class="hljs-attribute">seven</span> <span class="hljs-number">7</span><br><span class="hljs-attribute">eight</span> <span class="hljs-number">8</span><br><span class="hljs-attribute">nine</span> <span class="hljs-number">9</span><br><span class="hljs-attribute">ten</span> <span class="hljs-number">10</span><br><span class="hljs-attribute">eleven</span> <span class="hljs-number">11</span><br><span class="hljs-attribute">twelve</span> <span class="hljs-number">12</span><br><span class="hljs-attribute">thirteen</span> <span class="hljs-number">13</span><br><span class="hljs-attribute">fourteen</span> <span class="hljs-number">14</span><br><span class="hljs-attribute">fifteen</span> <span class="hljs-number">15</span><br><span class="hljs-attribute">sixteen</span> <span class="hljs-number">16</span><br><span class="hljs-attribute">seventeen</span> <span class="hljs-number">17</span><br><span class="hljs-attribute">eighteen</span> <span class="hljs-number">18</span><br><span class="hljs-attribute">nineteen</span> <span class="hljs-number">19</span><br><span class="hljs-attribute">twenty</span> <span class="hljs-number">20</span><br><span class="hljs-attribute">thirty</span> <span class="hljs-number">30</span><br><span class="hljs-attribute">forty</span> <span class="hljs-number">40</span><br><span class="hljs-attribute">fifty</span> <span class="hljs-number">50</span><br><span class="hljs-attribute">sixty</span> <span class="hljs-number">60</span><br><span class="hljs-attribute">seventy</span> <span class="hljs-number">70</span><br><span class="hljs-attribute">eighty</span> <span class="hljs-number">80</span><br><span class="hljs-attribute">ninety</span> <span class="hljs-number">90</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>一个很简单的模拟题，考察了对STL_map的运用（当然别的形如字符串数组的东西也可以）。</p>
+<p>出题人因为这道题被锐评了……，感谢eroengine同学提供idea。</p>
+<p>我们使用 $map&lt;string,int&gt;$ 来满足字符串和数字之间的键值对应，在处理输入输出字符串的时候，不难发现 $+$ 和 $-$ 字符对于答案没有影响，作为连词符，它的作用与加法符号一样。所以我们直接计算每一个字符串所代表的数字和即可。</p>
+<p>有人吐槽本题是码农题，可是这题可以把备注中的内容复制了用一个新的形式输出（自己另外写一个转换程序），然后把形如 $map[seventeen]&#x3D;17$ 的28行式子复制进本题的需要提交的代码中就行咯。或者可以选择用正则表达式、文本编辑器等工具实现替换，复制完了单词表题目就很简单了。记得输出 $and$ 哦~</p>
+<h3 id="STD-1"><a href="#STD-1" class="headerlink" title="STD"></a>STD</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br>map&lt;string,<span class="hljs-type">int</span>&gt; mp;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	mp[<span class="hljs-string">&quot;zero&quot;</span>]	=<span class="hljs-number">0</span>;<br>	mp[<span class="hljs-string">&quot;one&quot;</span>]	=<span class="hljs-number">1</span>;<br>	mp[<span class="hljs-string">&quot;two&quot;</span>]	=<span class="hljs-number">2</span>;<br>	mp[<span class="hljs-string">&quot;three&quot;</span>]	=<span class="hljs-number">3</span>;<br>	mp[<span class="hljs-string">&quot;four&quot;</span>]	=<span class="hljs-number">4</span>;<br>	mp[<span class="hljs-string">&quot;five&quot;</span>]	=<span class="hljs-number">5</span>;<br>	mp[<span class="hljs-string">&quot;six&quot;</span>]	=<span class="hljs-number">6</span>;<br>	mp[<span class="hljs-string">&quot;seven&quot;</span>]	=<span class="hljs-number">7</span>;<br>	mp[<span class="hljs-string">&quot;eight&quot;</span>]	=<span class="hljs-number">8</span>;<br>	mp[<span class="hljs-string">&quot;nine&quot;</span>]	=<span class="hljs-number">9</span>;<br>	mp[<span class="hljs-string">&quot;ten&quot;</span>]	=<span class="hljs-number">10</span>;<br>	mp[<span class="hljs-string">&quot;eleven&quot;</span>]	=<span class="hljs-number">11</span>;<br>	mp[<span class="hljs-string">&quot;twelve&quot;</span>]	=<span class="hljs-number">12</span>;<br>	mp[<span class="hljs-string">&quot;thirteen&quot;</span>]	=<span class="hljs-number">13</span>;<br>	mp[<span class="hljs-string">&quot;fourteen&quot;</span>]	=<span class="hljs-number">14</span>;<br>	mp[<span class="hljs-string">&quot;fifteen&quot;</span>]	=<span class="hljs-number">15</span>;<br>	mp[<span class="hljs-string">&quot;sixteen&quot;</span>]	=<span class="hljs-number">16</span>;<br>	mp[<span class="hljs-string">&quot;seventeen&quot;</span>]	=<span class="hljs-number">17</span>;<br>	mp[<span class="hljs-string">&quot;eighteen&quot;</span>]	=<span class="hljs-number">18</span>;<br>	mp[<span class="hljs-string">&quot;nineteen&quot;</span>]	=<span class="hljs-number">19</span>;<br>	mp[<span class="hljs-string">&quot;twenty&quot;</span>]	=<span class="hljs-number">20</span>;<br>	mp[<span class="hljs-string">&quot;thirty&quot;</span>]	=<span class="hljs-number">30</span>;<br>	mp[<span class="hljs-string">&quot;forty&quot;</span>]		=<span class="hljs-number">40</span>;<br>	mp[<span class="hljs-string">&quot;fifty&quot;</span>]		=<span class="hljs-number">50</span>;<br>	mp[<span class="hljs-string">&quot;sixty&quot;</span>]		=<span class="hljs-number">60</span>;<br>	mp[<span class="hljs-string">&quot;seventy&quot;</span>]	=<span class="hljs-number">70</span>;<br>	mp[<span class="hljs-string">&quot;eighty&quot;</span>]	=<span class="hljs-number">80</span>;<br>	mp[<span class="hljs-string">&quot;ninety&quot;</span>]	=<span class="hljs-number">90</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-built_in">init</span>();<br>	<span class="hljs-type">int</span> t,ans;<br>	cin&gt;&gt;t;<br>	<span class="hljs-keyword">while</span>(t--)<br>	&#123;<br>		string s,tmp=<span class="hljs-string">&quot;&quot;</span>;<br>		cin&gt;&gt;s;<br>		s+=<span class="hljs-string">&#x27;+&#x27;</span>;<br>		ans=<span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> i:s)<br>		&#123;<br>			<span class="hljs-keyword">if</span>(i==<span class="hljs-string">&#x27;+&#x27;</span>||i==<span class="hljs-string">&#x27;-&#x27;</span>)<br>			&#123;<br>				ans+=mp[tmp];<br>				tmp=<span class="hljs-string">&quot;&quot;</span>;<br>				<span class="hljs-keyword">continue</span>;<br>			&#125;<br>			tmp+=i;<br>		&#125;<br>		cout&lt;&lt;ans&lt;&lt;endl;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="C-签签签到"><a href="#C-签签签到" class="headerlink" title="C. 签签签到"></a>C. 签签签到</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>戴戴大师兄不小心把整套题的难度出高了，所以他打算放一个签到题。 </p>
+<p>签到题肯定不能弄得特别难，所以他决定让你输出一个<a target="_blank" rel="noopener" href="https://pasteme.gxuca.team/1743">字符串</a>。 </p>
+<p>为了放松气氛，戴戴大师兄决定给大家看一点好玩的图，这张图和题目没有关系。 </p>
+<p>  <img src="https://uploadfiles.nowcoder.com/images/20220426/322212_1650968118981/AE61F053444D9D31264940EF73ECBAD8" srcset="/img/loading.gif" lazyload alt="img"><br>然后，你要做的就是点开<a target="_blank" rel="noopener" href="https://pasteme.gxuca.team/1744">云剪切板链接</a>，然后把<a target="_blank" rel="noopener" href="https://pasteme.gxuca.team/1744">字符串</a>输出。 </p>
+<p>提示：<a target="_blank" rel="noopener" href="https://pasteme.gxuca.team/1744">云剪切板链接</a>和<a target="_blank" rel="noopener" href="https://pasteme.gxuca.team/1744">字符串</a>的字样上都有超链接，把鼠标移到上面的话上就可以看到字变色了，就可以打开云剪切板了。 </p>
+<p>做题目一定要仔细哦~心急吃不了热豆腐</p>
+<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>这题还蛮好玩的，出个这个活跃一下气氛，感谢沙烬同学提供idea。</p>
+<p>本题的题面中共有5个超链接，在图片下方的4个都是假的超链接，点开后会是这么一句话<br>$$<br>Make \quad CCSU_ACM \quad Great \quad Again<br>$$<br>这句话应该是每一个CCSU_ACMer共同的梦想。</p>
+<p>但是很可惜，本题的答案不是这句话。图片上方有还有一个超链接，点开后是如下字样<br>$$<br>%d%\verb||n\verb|”|<br>$$<br>你需要做的是在不转义的情况下输出一下字符串，使用R”(STRING)”可以实现字符串不转义输出。</p>
+<p>PS：轻点喷，鼠标放在超链接上的时候可以看到下面四个都写了“别点”，最上面那个才有“这是正确答案”。不信你再去试一试！</p>
+<h3 id="STD-2"><a href="#STD-2" class="headerlink" title="STD"></a>STD</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    std::cout&lt;&lt;<span class="hljs-string">R&quot;(%d%\n&quot;)&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="D-Alice-and-Bob"><a href="#D-Alice-and-Bob" class="headerlink" title="D. Alice and Bob"></a>D. Alice and Bob</h2><h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>​    Alice 和 Bob 又在玩游戏，今天他们玩抽牌游戏。已知牌堆有共 $n$ 张牌，两个人轮流从桌面上抓牌，记每次抓牌前牌堆有 $s$ 张牌，则两人每一次至少取 $1$ 张牌，至多取 $\lceil \frac{s}{2}\rceil$张牌。当一个人没有牌可以取时（即牌堆余量为0张牌时），他就输掉了游戏。对于给定的 $n$ 张牌来说，Bob 先取，<strong>请问Alice能否赢得游戏</strong>？能则输出 <strong>YES</strong> ，否则输出 <strong>NO</strong>。（假设 Alice 和 Bob 都足够聪明)</p>
+<p>注：$\lceil x\rceil$表示不大于$x$的最大整数，例如$\lceil \frac{1}{114514}\rceil&#x3D;1$</p>
+<h3 id="输入描述-2"><a href="#输入描述-2" class="headerlink" title="输入描述"></a>输入描述</h3><p>第一行一个正整数 $t$ ，表示有 $t$ 组数据。</p>
+<p>接下来 $t$ 行每行一个正整数 $n$ 表示牌堆里牌的数量</p>
+<p>$1≤t≤100000$</p>
+<p>$1≤n≤1000$</p>
+<h3 id="输出描述-2"><a href="#输出描述-2" class="headerlink" title="输出描述"></a>输出描述</h3><p>输出 $t$ 行，每行一个英文大写字符串表示Alice的胜负状态。</p>
+<h3 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-number">2</span><br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-keyword">NO</span><br><span class="hljs-keyword">YES</span><br></code></pre></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/11/21-22-1%E8%93%9D%E6%A1%A5%E8%AE%AD%E7%BB%835%20%E9%A2%98%E8%A7%A3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/11/%E9%95%BF%E6%B2%99%E5%AD%A6%E9%99%A2%E2%80%9C%E9%A3%9E%E8%85%BE%E8%BF%88%E5%88%9B%E6%9D%AF%E2%80%9D2022%E5%B9%B4%E6%96%B0%E7%94%9F%E8%B5%9B/">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
