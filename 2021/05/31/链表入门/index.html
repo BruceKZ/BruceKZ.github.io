@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Bruce12138">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="题目来自某NJU同学的程序设计基础作业 贴一下题目：  用链表建立两个整数集合A和B（从键盘键入集合的元素，以-1结束，集合中没有-1）。 分别编写三个函数计算这两个集合的。 a.交集 b.并集 c.差集A-B 三个函数的计算结果为新的链表。 输出这三个新链表。  做题心得 其实这道题用数组直接能秒杀掉，难度就在对于单链表的理解与应用。对指针和结构体有挺高的掌握要求。 之前没好好学链表，总觉得数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用链表实现集合的交集并集差集运算">
+<meta property="og:url" content="http://example.com/2021/05/31/%E9%93%BE%E8%A1%A8%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="Bruce12138&#39;s Blog">
+<meta property="og:description" content="题目来自某NJU同学的程序设计基础作业 贴一下题目：  用链表建立两个整数集合A和B（从键盘键入集合的元素，以-1结束，集合中没有-1）。 分别编写三个函数计算这两个集合的。 a.交集 b.并集 c.差集A-B 三个函数的计算结果为新的链表。 输出这三个新链表。  做题心得 其实这道题用数组直接能秒杀掉，难度就在对于单链表的理解与应用。对指针和结构体有挺高的掌握要求。 之前没好好学链表，总觉得数组">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2415569/202105/2415569-20210531220838516-286187188.png">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2415569/202105/2415569-20210531222023467-207797017.png">
+<meta property="article:published_time" content="2021-05-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-12T02:44:05.519Z">
+<meta property="article:author" content="Bruce12138">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img2020.cnblogs.com/blog/2415569/202105/2415569-20210531220838516-286187188.png">
+  
+  
+  <title>用链表实现集合的交集并集差集运算 - Bruce12138&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Bruce12138</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                好朋友们
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/icpc.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="用链表实现集合的交集并集差集运算">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-31 00:00" pubdate>
+        2021年5月31日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.4k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      37 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">用链表实现集合的交集并集差集运算</h1>
+            
+            <div class="markdown-body">
+              <p>题目来自某NJU同学的程序设计基础作业</p>
+<p>贴一下题目：<img src="https://img2020.cnblogs.com/blog/2415569/202105/2415569-20210531220838516-286187188.png" srcset="/img/loading.gif" lazyload alt="img" /></p>
+<p><img src="https://img2020.cnblogs.com/blog/2415569/202105/2415569-20210531222023467-207797017.png" srcset="/img/loading.gif" lazyload alt="img" /></p>
+<p>用链表建立两个整数集合A和B（从键盘键入集合的元素，以-1结束，集合中没有-1）。</p>
+<p>分别编写三个函数计算这两个集合的。</p>
+<p>a.交集</p>
+<p>b.并集</p>
+<p>c.差集A-B</p>
+<p><strong>三个函数的计算结果为新的链表。</strong></p>
+<p>输出这三个新链表。</p>
+<h1 id="做题心得"><a class="markdownIt-Anchor" href="#做题心得"></a> 做题心得</h1>
+<p>其实这道题用数组直接能秒杀掉，难度就在对于单链表的理解与应用。对指针和结构体有挺高的掌握要求。</p>
+<p>之前没好好学链表，总觉得数组能解决的事用数组，数组解决不了的用STL(stl永远的神不接受反驳)</p>
+<p>补了三天的链表，总算学得明白了一点，简单把题过了一下。没有用函数分段，其实分段一下很简单。</p>
+<p>P.S肥肠感谢鸡哥龙神的鼎力相助！</p>
+<p>直接po代码，有错误或者其他更好的思路也希望dalao们可以带带</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br></pre></div></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span><span class="hljs-comment">//链表结构体 </span><br>&#123;<br>    <span class="hljs-type">int</span> data;<span class="hljs-comment">//数据域 </span><br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>* next;<span class="hljs-comment">//指向下一个结构体的指针 </span><br>&#125;;<br><span class="hljs-function">node* <span class="hljs-title">create</span><span class="hljs-params">(<span class="hljs-type">int</span> data)</span><span class="hljs-comment">//新建链表项（新结构体） </span></span><br><span class="hljs-function"></span>&#123;<br>    node* newNode = (node*)<span class="hljs-built_in">malloc</span>(<span class="hljs-built_in">sizeof</span>(node));<span class="hljs-comment">//给这个结构体开空间 </span><br>    newNode-&gt;data = data;<span class="hljs-comment">//保存数据 </span><br>    newNode-&gt;next = <span class="hljs-literal">NULL</span>;<span class="hljs-comment">//指针为空 </span><br>    <span class="hljs-keyword">return</span> newNode;<span class="hljs-comment">//返回新建的结构体 </span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span> *p,*q,*t,*h;<span class="hljs-comment">//定义几个临时变量，会用到 </span><br>    <span class="hljs-type">int</span> tmp;<br>    <br>    <span class="hljs-comment">//输入集合A </span><br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;tmp);<br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>* head_a = <span class="hljs-built_in">create</span>(tmp);<span class="hljs-comment">//头节点 </span><br>    p = head_a;<span class="hljs-comment">//p是临时变量 </span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;tmp) &amp;&amp; tmp != <span class="hljs-number">-1</span>)<span class="hljs-comment">//输入数字，且当tmp=-1的时候结束 </span><br>    &#123;<br>        <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>* a = <span class="hljs-built_in">create</span>(tmp);<span class="hljs-comment">//给链表A新建节点 </span><br>        p-&gt;next = a;<span class="hljs-comment">//上一个节点的指针指向现在这个 </span><br>        p = a;<span class="hljs-comment">//临时变量变成现在这个 </span><br>    &#125;<br>    <br>    <span class="hljs-comment">//输入集合A </span><br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;tmp);<br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>* head_b = <span class="hljs-built_in">create</span>(tmp);<span class="hljs-comment">//头节点 </span><br>    p = head_b;<span class="hljs-comment">//p是临时变量 </span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;tmp) &amp;&amp; tmp != <span class="hljs-number">-1</span>)<span class="hljs-comment">//输入数字，且当tmp=-1的时候结束</span><br>    &#123;<br>        <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>* b = <span class="hljs-built_in">create</span>(tmp);<span class="hljs-comment">//给链表A新建节点</span><br>        p-&gt;next = b;<span class="hljs-comment">//上一个节点的指针指向现在这个</span><br>        p = b;<span class="hljs-comment">//临时变量变成现在这个 </span><br>    &#125;<br>    <br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>* head_jiao = <span class="hljs-built_in">create</span>(<span class="hljs-number">-1</span>);<span class="hljs-comment">//定义交集的头结点 </span><br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>* head_bing = <span class="hljs-built_in">create</span>(<span class="hljs-number">-1</span>);<span class="hljs-comment">//定义并集的头结点 </span><br>    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>* head_cha = <span class="hljs-built_in">create</span>(<span class="hljs-number">-1</span>);<span class="hljs-comment">//定义差集的头结点 </span><br>    <br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">    交集思路：</span><br><span class="hljs-comment">    遍历A，对A的每个元素 ，都与B中的元素进行一一对比</span><br><span class="hljs-comment">    类似于for循环中的</span><br><span class="hljs-comment">    for(int i=0;i&lt;n;i++)</span><br><span class="hljs-comment">    &#123;</span><br><span class="hljs-comment">        for(int j=0;j&lt;m;j++)</span><br><span class="hljs-comment">        &#123;</span><br><span class="hljs-comment">            比较a和b</span><br><span class="hljs-comment">        &#125;</span><br><span class="hljs-comment">    &#125;</span><br><span class="hljs-comment">    */</span> <br>     <br>    p=head_a;<span class="hljs-comment">//p是临时变量，从A的头开始 </span><br>    t=head_jiao;<span class="hljs-comment">//t是临时变量，用来存交集的链表 </span><br>    <span class="hljs-keyword">while</span>(p!=<span class="hljs-literal">NULL</span>)<span class="hljs-comment">//链表A非空 ，遍历A链表 </span><br>    &#123;<br>        <br>        q=head_b;<span class="hljs-comment">//q是临时变量 ，从B的头开始 </span><br>        <span class="hljs-keyword">while</span>(q!=<span class="hljs-literal">NULL</span>)<span class="hljs-comment">//链表B非空 ，遍历B链表 </span><br>        &#123;<br>            <span class="hljs-keyword">if</span>(q-&gt;data==p-&gt;data)<span class="hljs-comment">//B元素=A元素 </span><br>            &#123;<br>                <span class="hljs-comment">//如果a和b中有相同元素，则存进交集链表中 </span><br>                <span class="hljs-comment">//以下操作与输入A,B集合同原理 </span><br>                <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>* jiao = <span class="hljs-built_in">create</span>(p-&gt;data);<br>                t-&gt;next = jiao;<br>                t = jiao;<br>                <span class="hljs-keyword">break</span>;<span class="hljs-comment">//因为找到了，所以break掉，去比较A的下一个元素 </span><br>            &#125;<br>            q=q-&gt;next;<span class="hljs-comment">//链表B的当前位置后移（q-&gt;next是下一个元素，让q=下一个元素 </span><br>        &#125;<br>        p=p-&gt;next;<span class="hljs-comment">//链表A的当前位置后移（p-&gt;next是下一个元素，让p=下一个元素 </span><br>    &#125;<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">    输出交集</span><br><span class="hljs-comment">    因为head_jiao-&gt;data头节点的数据域中存的是-1（见上文定义交集头结点 </span><br><span class="hljs-comment">    故从head_jiao的下一个开始</span><br><span class="hljs-comment">    */</span><br>    t=head_jiao-&gt;next;<br>    <span class="hljs-keyword">while</span>(t!=<span class="hljs-literal">NULL</span>)<span class="hljs-comment">//遍历交集链表 </span><br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,t-&gt;data);<span class="hljs-comment">//输出元素，记得加空格 </span><br>        t=t-&gt;next;<span class="hljs-comment">//后移 </span><br>    &#125;<br>    <span class="hljs-comment">//Attention:这个-1不应该被放在链表中 </span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;-1\n&quot;</span>);<span class="hljs-comment">//最后的元素以-1结尾，记得加换行 </span><br>    <br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">    并集思路：</span><br><span class="hljs-comment">    先复制A的所有元素在并集bing里面</span><br><span class="hljs-comment">    然后遍历B，将B的每一个元素都与bing中元素比较</span><br><span class="hljs-comment">    若比较到最后都不一样，则当前元素不在bing中</span><br><span class="hljs-comment">    将这个元素添加进bing的末尾 </span><br><span class="hljs-comment">    */</span><br>    <br>    p=head_a;<span class="hljs-comment">//p是临时变量，从A的头开始</span><br>    t=head_bing;<span class="hljs-comment">//t是临时变量，用来存并集的链表</span><br>    <span class="hljs-keyword">while</span>(p!=<span class="hljs-literal">NULL</span>)<span class="hljs-comment">//遍历链表A </span><br>    &#123;<br>        <span class="hljs-comment">//以下操作与输入A,B集合同理，使用链表A的数据 </span><br>        <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>* bing = <span class="hljs-built_in">create</span>(p-&gt;data);<br>        t-&gt;next = bing;<br>        t = bing;<br>        p=p-&gt;next;<span class="hljs-comment">//链表A的当前位置后移（p-&gt;next是下一个元素，让p=下一个元素 </span><br>    &#125;<br>    q=head_b;<span class="hljs-comment">//q是临时变量，从B的头开始 </span><br><br>    <span class="hljs-keyword">while</span>(q!=<span class="hljs-literal">NULL</span>)<span class="hljs-comment">//遍历链表B</span><br>    &#123;<br>            h=head_bing;<span class="hljs-comment">//h是临时变量，读取并集的链表</span><br>        <span class="hljs-type">int</span> flag=<span class="hljs-number">0</span>;<span class="hljs-comment">//用flag来记录是否有相同元素 </span><br>        <span class="hljs-keyword">while</span>(h!=<span class="hljs-literal">NULL</span>)<span class="hljs-comment">//遍历并集</span><br>        &#123;<br>            <span class="hljs-keyword">if</span>(h-&gt;data==q-&gt;data)<span class="hljs-comment">//存在相同元素</span><br>            &#123; <br>                flag=<span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            h=h-&gt;next;<span class="hljs-comment">//后移</span><br>        &#125;<br>        <span class="hljs-keyword">if</span>(!flag)<span class="hljs-comment">//如果不存在相同元素</span><br>        &#123;<br>            <span class="hljs-comment">//以下操作与输入A,B集合同理，使用链表B的当前元素数据 </span><br>            <span class="hljs-comment">//t还是上面复制的时候定义的那个，继续相同操作 </span><br>            <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>* bing = <span class="hljs-built_in">create</span>(q-&gt;data);<br>            t-&gt;next = bing;<br>            t = bing;<br>        &#125;<br>        q=q-&gt;next;<span class="hljs-comment">//后移 </span><br>    &#125;<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">    输出并集</span><br><span class="hljs-comment">    因为head_bing-&gt;data头节点的数据域中存的是-1（见上文定义并集头结点 </span><br><span class="hljs-comment">    故从head_bing的下一个开始</span><br><span class="hljs-comment">    */</span> <br>    t=head_bing-&gt;next;<br>    <span class="hljs-keyword">while</span>(t!=<span class="hljs-literal">NULL</span>)<span class="hljs-comment">//遍历并集链表 </span><br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,t-&gt;data);<span class="hljs-comment">//输出元素，记得加空格 </span><br>        t=t-&gt;next;<span class="hljs-comment">//后移 </span><br>    &#125;<br>    <span class="hljs-comment">//Attention:这个-1不应该被放在链表中 </span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;-1\n&quot;</span>);<span class="hljs-comment">//最后的元素以-1结尾，记得加换行</span><br>    <br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">    差集思路：</span><br><span class="hljs-comment">    同并集，先复制链表A在链表cha里面</span><br><span class="hljs-comment">    再遍历链表bing，如果遇到元素在链表A中，则删除链表节点</span><br><span class="hljs-comment">    */</span><br>    p=head_a;<span class="hljs-comment">//p是临时变量，从A的头开始</span><br>    t=head_cha;<span class="hljs-comment">//t是临时变量，用来存差集的链表</span><br>    <span class="hljs-keyword">while</span>(p!=<span class="hljs-literal">NULL</span>)<span class="hljs-comment">//遍历链表A </span><br>    &#123;<br>        <span class="hljs-comment">//以下操作与输入A,B集合同理，使用链表A的数据 </span><br>        <span class="hljs-keyword">struct</span> <span class="hljs-title class_">node</span>* cha = <span class="hljs-built_in">create</span>(p-&gt;data);<br>        t-&gt;next = cha;<br>        t = cha;<br>        p=p-&gt;next;<span class="hljs-comment">//链表A的当前位置后移（p-&gt;next是下一个元素，让p=下一个元素 </span><br>    &#125;<br><br>    q=head_jiao;<span class="hljs-comment">//q是临时变量，从jiao的头开始</span><br>    <span class="hljs-keyword">while</span>(q!=<span class="hljs-literal">NULL</span>)<span class="hljs-comment">//遍历链表jiao </span><br>    &#123;<br>        h=head_cha;<span class="hljs-comment">//h是临时变量，从cha的第1个开始 </span><br>        t=head_cha-&gt;next;<span class="hljs-comment">//t是临时变量，从cha的第2个开始 </span><br>        <br>        <br>        <span class="hljs-keyword">while</span>(t!=<span class="hljs-literal">NULL</span>)<span class="hljs-comment">//遍历cha差集，寻找当前数，然后把它删了 </span><br>        &#123;<br>            <span class="hljs-keyword">if</span>(t-&gt;data==q-&gt;data)<span class="hljs-comment">//如果相等，删除 </span><br>            &#123;<br>                h-&gt;next=t-&gt;next;<span class="hljs-comment">//跳过t指向下一个 </span><br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            <span class="hljs-comment">//如果没删除，后移 </span><br>            h=h-&gt;next;<br>            t=t-&gt;next;<br>        &#125;<br>        q=q-&gt;next;<span class="hljs-comment">//后移 </span><br>    &#125;<br>    <br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">    输出差集</span><br><span class="hljs-comment">    因为head_cha-&gt;data头节点的数据域中存的是-1（见上文定义并集头结点 </span><br><span class="hljs-comment">    故从head_cha的下一个开始</span><br><span class="hljs-comment">    */</span> <br>    t=head_cha-&gt;next;<br>    <span class="hljs-keyword">while</span>(t!=<span class="hljs-literal">NULL</span>)<span class="hljs-comment">//遍历差集链表 </span><br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,t-&gt;data);<span class="hljs-comment">//输出元素，记得加空格 </span><br>        t=t-&gt;next;<span class="hljs-comment">//后移 </span><br>    &#125;<br>    <span class="hljs-comment">//Attention:这个-1不应该被放在链表中 </span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;-1\n&quot;</span>);<span class="hljs-comment">//最后的元素以-1结尾，记得加换行</span><br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/12/05/21-22-1%E8%93%9D%E6%A1%A5%E8%AE%AD%E7%BB%835%20%E9%A2%98%E8%A7%A3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">21-22-1蓝桥训练5 题解</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,569 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Bruce12138">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Codeforces Round #735 (Div. 2)  打铁局，div2掉分了，乐 补题去了  A. Cherry time limit per test ： 1 second memory limit per test ： 256 megabytes You are given nn integers a1,a2,…,an. Find the maximum value of max(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bruce12138&#39;s Blog">
+<meta property="og:url" content="http://example.com/2022/05/12/Codeforces%20Round%20#735%20(Div.%202)/index.html">
+<meta property="og:site_name" content="Bruce12138&#39;s Blog">
+<meta property="og:description" content="Codeforces Round #735 (Div. 2)  打铁局，div2掉分了，乐 补题去了  A. Cherry time limit per test ： 1 second memory limit per test ： 256 megabytes You are given nn integers a1,a2,…,an. Find the maximum value of max(">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img2020.cnblogs.com/blog/2415569/202107/2415569-20210730010221121-929033517.png">
+<meta property="og:image" content="https://espresso.codeforces.com/ea30edaf24bcf174de47be04738ec47ddcb84374.png">
+<meta property="article:published_time" content="2022-05-12T02:46:49.852Z">
+<meta property="article:modified_time" content="2022-05-12T02:51:00.530Z">
+<meta property="article:author" content="Bruce12138">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img2020.cnblogs.com/blog/2415569/202107/2415569-20210730010221121-929033517.png">
+  
+  
+  <title>Bruce12138&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Bruce12138</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                好朋友们
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/icpc.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-12 10:46" pubdate>
+        2022年5月12日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      65 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            <div class="markdown-body">
+              <h1 id="codeforces-round-735-div-2"><a class="markdownIt-Anchor" href="#codeforces-round-735-div-2"></a> <a target="_blank" rel="noopener" href="https://www.cnblogs.com/brucekz/p/cf735.html">Codeforces Round #735 (Div. 2) </a></h1>
+<p>打铁局，div2掉分了，乐</p>
+<p>补题去了</p>
+<h2 id="a-cherry"><a class="markdownIt-Anchor" href="#a-cherry"></a> <strong>A. Cherry</strong></h2>
+<p><em>time limit per test ：</em> 1 second</p>
+<p>memory limit per test ： 256 megabytes</p>
+<p>You are given nn integers a1,a2,…,an. Find the maximum value of max(al,al+1,…,ar)⋅min(al,al+1,…,ar) over all pairs (l,r) of integers for which 1≤l&lt;r≤n.</p>
+<h3 id="input"><a class="markdownIt-Anchor" href="#input"></a> Input</h3>
+<p>The first line contains a single integer t (1≤t≤10000)  — the number of test cases.</p>
+<p>The first line of each test case contains a single integer n (2≤n≤10^5).</p>
+<p>The second line of each test case contains nn integers a1,a2,…,ana1,a2,…,an (1≤ai≤10^6).</p>
+<p>It is guaranteed that the sum of nn over all test cases doesn’t exceed 3⋅10^5.</p>
+<h3 id="output"><a class="markdownIt-Anchor" href="#output"></a> Output</h3>
+<p>For each test case, print a single integer  — the maximum possible value of the product from the statement.</p>
+<h3 id="example"><a class="markdownIt-Anchor" href="#example"></a> Example</h3>
+<h4 id="input-2"><a class="markdownIt-Anchor" href="#input-2"></a> input</h4>
+<figure class="highlight basic"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">4</span><br><span class="hljs-number">3</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">4</span> <span class="hljs-number">3</span><br><span class="hljs-number">4</span><br><span class="hljs-symbol">3 </span><span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-symbol">69 </span><span class="hljs-number">69</span><br><span class="hljs-number">6</span><br><span class="hljs-symbol">719313 </span><span class="hljs-number">273225</span> <span class="hljs-number">402638</span> <span class="hljs-number">473783</span> <span class="hljs-number">804745</span> <span class="hljs-number">323328</span><br></code></pre></td></tr></table></figure>
+<h4 id="output-2"><a class="markdownIt-Anchor" href="#output-2"></a> Output</h4>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-number">12</span><br><span class="hljs-number">6</span><br><span class="hljs-number">4761</span><br><span class="hljs-number">381274500335</span><br></code></pre></td></tr></table></figure>
+<h3 id="note"><a class="markdownIt-Anchor" href="#note"></a> Note</h3>
+<p>Let f(l,r)=max(al,al+1,…,ar)⋅min(al,al+1,…,ar)f(l,r)=max(al,al+1,…,ar)⋅min(al,al+1,…,ar).</p>
+<p>In the first test case,</p>
+<ul>
+<li>f(1,2)=max(a1,a2)⋅min(a1,a2)=max(2,4)⋅min(2,4)=4⋅2=8f(1,2)=max(a1,a2)⋅min(a1,a2)=max(2,4)⋅min(2,4)=4⋅2=8.</li>
+<li>f(1,3)=max(a1,a2,a3)⋅min(a1,a2,a3)=max(2,4,3)⋅min(2,4,3)=4⋅2=8f(1,3)=max(a1,a2,a3)⋅min(a1,a2,a3)=max(2,4,3)⋅min(2,4,3)=4⋅2=8.</li>
+<li>f(2,3)=max(a2,a3)⋅min(a2,a3)=max(4,3)⋅min(4,3)=4⋅3=12f(2,3)=max(a2,a3)⋅min(a2,a3)=max(4,3)⋅min(4,3)=4⋅3=12.</li>
+</ul>
+<p>So the maximum is f(2,3)=12f(2,3)=12.</p>
+<p>In the second test case, the maximum is f(1,2)=f(1,3)=f(2,3)=6f(1,2)=f(1,3)=f(2,3)=6.</p>
+<p>——————————————————————————</p>
+<h3 id="题意"><a class="markdownIt-Anchor" href="#题意"></a> 题意：</h3>
+<p>给定长度为n的序列，考虑所有的l，r满足1≤l&lt;r≤n：在区间a[l]<sub>a[r]中，计算h=max(a[l]</sub>a[r])*min(a[l]~a[r])。在所有的l和r组合中，找到h的最大值。</p>
+<h3 id="思路"><a class="markdownIt-Anchor" href="#思路"></a> 思路：</h3>
+<p>最开始考虑用划窗去维护最大最小值，由贪心思想应该让max和min尽可能的大，即max为最大的数，min为次大的数。后来分析发现，对于a[ ]={ 1, 4, 6, 3, 2, 8 }这样的一组，无法做到max=8，min=6的情况。因为6和8之间还有3,2来阻止min变大。所以对于所有的l,r，仅取r=l+1时为最优解，即取两个相邻的数。在两个相邻的数中，可以保证max和min不被其他更大或更小的数干扰。</p>
+<h3 id="实现"><a class="markdownIt-Anchor" href="#实现"></a> 实现：</h3>
+<p>找相邻的数乘积真的是签中签了，for一遍的事情。考虑到数据规模1≤ai≤10^6，记得开long long！</p>
+<h3 id="ac代码"><a class="markdownIt-Anchor" href="#ac代码"></a> AC代码：</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> t,n;<br>    <span class="hljs-type">long</span> <span class="hljs-type">long</span> maxx,tmp,a[<span class="hljs-number">100005</span>];<br>    cin&gt;&gt;t;<br>    <span class="hljs-keyword">while</span>(t--)<br>    &#123;<br>        maxx=<span class="hljs-number">0</span>;<br>        cin&gt;&gt;n;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>            cin&gt;&gt;a[i];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n<span class="hljs-number">-1</span>;i++)<br>        &#123;<br>            tmp=a[i]*a[i+<span class="hljs-number">1</span>];<br>            <span class="hljs-keyword">if</span>(tmp&gt;maxx)<br>                maxx=tmp;<br>        &#125;<br>        cout&lt;&lt;maxx&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="b-cobb"><a class="markdownIt-Anchor" href="#b-cobb"></a> <strong>B. Cobb</strong></h2>
+<p>time limit per test ： 1 second</p>
+<p>memory limit per test ： 256 megabytes</p>
+<p>You are given n integers a1,a2,…,an and an integer k. Find the maximum value of i⋅j−k⋅(ai|aj)over all pairs (i,j) of integers with 1≤i&lt;j≤n. Here, | is the <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%80%BB%E8%BE%91%E6%88%96/10993689?fr=aladdin">bitwise OR operator</a>.</p>
+<h3 id="input-3"><a class="markdownIt-Anchor" href="#input-3"></a> Input</h3>
+<p>The first line contains a single integer tt (1≤t≤10000)  — the number of test cases.</p>
+<p>The first line of each test case contains two integers nn (2≤n≤10^5) and kk (1≤k≤min(n,100)).</p>
+<p>The second line of each test case contains nn integers a1,a2,…,an (0≤ai≤n).</p>
+<p>It is guaranteed that the sum of nn over all test cases doesn’t exceed 3⋅10^5.</p>
+<h3 id="output-3"><a class="markdownIt-Anchor" href="#output-3"></a> Output</h3>
+<p>For each test case, print a single integer  — the maximum possible value of i⋅j−k⋅(ai|aj).</p>
+<h3 id="example-2"><a class="markdownIt-Anchor" href="#example-2"></a> Example</h3>
+<h4 id="input-4"><a class="markdownIt-Anchor" href="#input-4"></a> input</h4>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">4</span><br><span class="hljs-symbol">3 </span><span class="hljs-number">3</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">1</span> <span class="hljs-number">3</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">4 </span><span class="hljs-number">3</span><br><span class="hljs-symbol">0 </span><span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span><br><span class="hljs-symbol">6 </span><span class="hljs-number">6</span><br><span class="hljs-symbol">3 </span><span class="hljs-number">2</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5</span> <span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+<h4 id="output-4"><a class="markdownIt-Anchor" href="#output-4"></a> Output</h4>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs diff"><span class="hljs-deletion">-1</span><br><span class="hljs-deletion">-4</span><br>3<br>12<br></code></pre></td></tr></table></figure>
+<h3 id="note-2"><a class="markdownIt-Anchor" href="#note-2"></a> Note</h3>
+<p>Let f(i,j)=i⋅j−k⋅(ai|aj).</p>
+<p>In the first test case,</p>
+<ul>
+<li>f(1,2)=1⋅2−k⋅(a1|a2)=2−3⋅(1|1)=−1f(1,2)=1⋅2−k⋅(a1|a2)=2−3⋅(1|1)=−1.</li>
+<li>f(1,3)=1⋅3−k⋅(a1|a3)=3−3⋅(1|3)=−6f(1,3)=1⋅3−k⋅(a1|a3)=3−3⋅(1|3)=−6.</li>
+<li>f(2,3)=2⋅3−k⋅(a2|a3)=6−3⋅(1|3)=−3f(2,3)=2⋅3−k⋅(a2|a3)=6−3⋅(1|3)=−3.</li>
+</ul>
+<p>So the maximum is f(1,2)=−1.</p>
+<p>In the fourth test case, the maximum is f(3,4)=12.</p>
+<h2 id="c-mikasa"><a class="markdownIt-Anchor" href="#c-mikasa"></a> <strong>C. Mikasa</strong></h2>
+<p>time limit per test ：1 second<br />
+memory limit per test ：256 megabytes<br />
+You are given two integers n and m. Find the MEX of the sequence n⊕0,n⊕1,…,n⊕m. Here, ⊕ is the bitwise XOR operator.</p>
+<p>MEX of the sequence of non-negative integers is the smallest non-negative integer that doesn’t appear in this sequence. For example, MEX(0,1,2,4)=3, and MEX(1,2021)=0.</p>
+<h3 id="input-5"><a class="markdownIt-Anchor" href="#input-5"></a> Input</h3>
+<p>The first line contains a single integer t (1≤t≤30000) — the number of test cases.</p>
+<p>The first and only line of each test case contains two integers n and m (0≤n,m≤109).</p>
+<h3 id="output-5"><a class="markdownIt-Anchor" href="#output-5"></a> Output</h3>
+<p>For each test case, print a single integer — the answer to the problem.</p>
+<h3 id="example-3"><a class="markdownIt-Anchor" href="#example-3"></a> Example</h3>
+<h4 id="input-6"><a class="markdownIt-Anchor" href="#input-6"></a> input</h4>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">5</span><br><span class="hljs-symbol">3 </span><span class="hljs-number">5</span><br><span class="hljs-symbol">4 </span><span class="hljs-number">6</span><br><span class="hljs-symbol">3 </span><span class="hljs-number">2</span><br><span class="hljs-symbol">69 </span><span class="hljs-number">696</span><br><span class="hljs-symbol">123456 </span><span class="hljs-number">654321</span><br></code></pre></td></tr></table></figure>
+<h4 id="output-6"><a class="markdownIt-Anchor" href="#output-6"></a> output</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs">4<br>3<br>0<br>640<br>530866<br></code></pre></td></tr></table></figure>
+<h3 id="note-3"><a class="markdownIt-Anchor" href="#note-3"></a> Note</h3>
+<p>In the first test case, the sequence is 3⊕0,3⊕1,3⊕2,3⊕3,3⊕4,3⊕5, or 3,2,1,0,7,6. The smallest non-negative integer which isn’t present in the sequence i. e. the MEX of the sequence is 4.</p>
+<p>In the second test case, the sequence is 4⊕0,4⊕1,4⊕2,4⊕3,4⊕4,4⊕5,4⊕6, or 4,5,6,7,0,1,2. The smallest non-negative integer which isn’t present in the sequence i. e. the MEX of the sequence is 3.</p>
+<p>In the third test case, the sequence is 3⊕0,3⊕1,3⊕2, or 3,2,1. The smallest non-negative integer which isn’t present in the sequence i. e. the MEX of the sequence is 0.</p>
+<h2 id="d-diane"><a class="markdownIt-Anchor" href="#d-diane"></a> <strong>D. Diane</strong></h2>
+<p><em>time limit per test :</em> 1 second</p>
+<p><em>memory limit per test :</em> 256 megabytes</p>
+<p>You are given an integer n. Find any string s of length n consisting only of English lowercase letters such that each non-empty substring of s occurs in ss an odd number of times. If there are multiple such strings, output any. It can be shown that such string always exists under the given constraints.</p>
+<p>A string a is a substring of a string b if a can be obtained from bb by deletion of several (possibly, zero or all) characters from the beginning and several (possibly, zero or all) characters from the end.</p>
+<h3 id="input-7"><a class="markdownIt-Anchor" href="#input-7"></a> Input</h3>
+<p>The first line contains a single integer t (1≤t≤500) — the number of test cases.</p>
+<p>The first line of each test case contains a single integer nn (1≤n≤105).</p>
+<p>It is guaranteed that the sum of nn over all test cases doesn’t exceed 3⋅10^5.</p>
+<h3 id="output-7"><a class="markdownIt-Anchor" href="#output-7"></a> Output</h3>
+<p>For each test case, print a single line containing the string ss. If there are multiple such strings, output any. It can be shown that such string always exists under the given constraints.</p>
+<h3 id="example-4"><a class="markdownIt-Anchor" href="#example-4"></a> Example</h3>
+<h4 id="input-8"><a class="markdownIt-Anchor" href="#input-8"></a> input</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs">4<br>3<br>5<br>9<br>19<br></code></pre></td></tr></table></figure>
+<h4 id="output-8"><a class="markdownIt-Anchor" href="#output-8"></a> output</h4>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">abc<br><span class="hljs-keyword">diane</span><br><span class="hljs-keyword"></span><span class="hljs-keyword">bbcaabbba</span><br><span class="hljs-keyword"></span>youarethecutestuwuu<br></code></pre></td></tr></table></figure>
+<h3 id="note-4"><a class="markdownIt-Anchor" href="#note-4"></a> Note</h3>
+<p>In the first test case, each substring of “abc” occurs exactly once.</p>
+<p>In the third test case, each substring of “bbcaabbba” occurs an odd number of times. In particular, “b” occurs 55 times, “a” and “bb” occur 3 times each, and each of the remaining substrings occurs exactly once.</p>
+<h3 id="题意-2"><a class="markdownIt-Anchor" href="#题意-2"></a> 题意：</h3>
+<p>给定序列s的长度n，构造一个可能的序列满足：s的任何子列在s中出现的次数为奇数次。</p>
+<h3 id="思路-2"><a class="markdownIt-Anchor" href="#思路-2"></a> 思路：</h3>
+<p>①举例：</p>
+<p>对于长度为9的序列aaaaaaaaa，子序列a出现了9次，aa出现了8次，aaa出现了7次…aaaaaaaaa出现了9次。</p>
+<p>而对于长度为8的序列aaaaaaaa，子序列a出现了8次，aa出现了7次，aaa出现了6次…aaaaaaaa出现了8次。</p>
+<p>②观察：</p>
+<p>由上两个例子，可得如下表格</p>
+<p><img src="https://img2020.cnblogs.com/blog/2415569/202107/2415569-20210730010221121-929033517.png" srcset="/img/loading.gif" lazyload alt="img" /></p>
+<p>所以，按照子序列的奇偶性去看表格时，当子序列是奇/偶时，为使其次数认为奇数次，可以选择奇+偶来构造</p>
+<p>③构造：</p>
+<p>构造时，需要两串x来满足上面的推论，一串x为奇数个，另一串为偶数个。这样x的总个数是（2<em>k）+(2</em>k+1)个。</p>
+<p>此时x的任意长度子串必满足出现次数为奇数，前后两串x满足-&gt;（前奇后偶，前偶后奇）</p>
+<p>若n为偶数，则需要用1个x以外的字符将两串x分隔开（例如y）。</p>
+<p>若n为奇数，则需要2个x以外的字符将两串x分隔开。同时，若选择了2个一样的字符，则又会出现不满足奇数个的情况。故只能选用两个不同的，非x的字符（例如y,z）</p>
+<p>④一些细节：</p>
+<p>由于上文构造时默认总长度n很大，但是不能遗漏了比如n<mark>1的情况，n</mark>1时只要1个任意字符串就可以。不加特判会按照奇数个的情况起码打印两个非x字符！</p>
+<p>最后，上代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> t,n;<br>    cin&gt;&gt;t;<br>    <span class="hljs-keyword">while</span>(t--)<br>    &#123;<br>        cin&gt;&gt;n;<br>        <span class="hljs-keyword">if</span>(n==<span class="hljs-number">1</span>)<br>            cout&lt;&lt;<span class="hljs-string">&quot;x&quot;</span>&lt;&lt;endl;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;n/<span class="hljs-number">2</span>;i++)<br>                cout&lt;&lt;<span class="hljs-string">&quot;x&quot;</span>;<br>            cout&lt;&lt;<span class="hljs-string">&quot;y&quot;</span>;<br>            <span class="hljs-keyword">if</span>(n%<span class="hljs-number">2</span>)<br>                cout&lt;&lt;<span class="hljs-string">&quot;z&quot;</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n/<span class="hljs-number">2</span>;i++)<br>                cout&lt;&lt;<span class="hljs-string">&quot;x&quot;</span>;<br>            cout&lt;&lt;endl; <br>        &#125;        <br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="e-you"><a class="markdownIt-Anchor" href="#e-you"></a> <strong>E. You</strong></h2>
+<p><em>time limit per test ：</em> 5 seconds</p>
+<p>memory limit per test ： 256 megabytes</p>
+<p>You are given a tree with nn nodes. As a reminder, a tree is a connected undirected graph without cycles.</p>
+<p>Let a1,a2,…,an be a sequence of integers. Perform the following operation <strong>exactly</strong> n times:</p>
+<ul>
+<li>Select an unerased node uu. Assign au:= number of <strong>unerased</strong> nodes adjacent to u. Then, erase the node u along with all edges that have it as an endpoint.</li>
+</ul>
+<p>For each integer k from 1 to n, find the number, modulo 998244353 , of different sequences a1,a2,…,an that satisfy the following conditions:</p>
+<ul>
+<li>it is possible to obtain aa by performing the aforementioned operations exactly nn times in some order.</li>
+<li>gcd(a1,a2,…,an)=kgcd⁡(a1,a2,…,an)=k. Here, gcdgcd means the greatest common divisor of the elements in a.</li>
+</ul>
+<h3 id="input-9"><a class="markdownIt-Anchor" href="#input-9"></a> Input</h3>
+<p>The first line contains a single integer tt (1≤t≤10000)  — the number of test cases.</p>
+<p>The first line of each test case contains a single integer n (2≤n≤10^5).</p>
+<p>Each of the next n−1 lines contains two integers uu and vv (1≤u,v≤n) indicating there is an edge between vertices u and v. It is guaranteed that the given edges form a tree.</p>
+<p>It is guaranteed that the sum of n over all test cases doesn’t exceed 3⋅10^5.</p>
+<h3 id="output-9"><a class="markdownIt-Anchor" href="#output-9"></a> Output</h3>
+<p>For each test case, print nn integers in a single line, where for each k from 1 to n, the k-th integer denotes the answer when gcdgcd equals to k.</p>
+<h3 id="example-5"><a class="markdownIt-Anchor" href="#example-5"></a> Example</h3>
+<h4 id="input-10"><a class="markdownIt-Anchor" href="#input-10"></a> input</h4>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">1</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">3</span><br><span class="hljs-number">2</span><br><span class="hljs-symbol">1 </span><span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+<h4 id="output-10"><a class="markdownIt-Anchor" href="#output-10"></a> output</h4>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">3 </span><span class="hljs-number">1</span> <span class="hljs-number">0</span><br><span class="hljs-symbol">2 </span><span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<h3 id="note-5"><a class="markdownIt-Anchor" href="#note-5"></a> Note</h3>
+<p>In the first test case,</p>
+<p><img src="https://espresso.codeforces.com/ea30edaf24bcf174de47be04738ec47ddcb84374.png" srcset="/img/loading.gif" lazyload alt="img" /></p>
+<ul>
+<li>If we delete the nodes in order 1→2→31→2→3 or 1→3→21→3→2, then the obtained sequence will be a=[2,0,0]a=[2,0,0] which has gcdgcd equals to 22.</li>
+<li>If we delete the nodes in order 2→1→32→1→3, then the obtained sequence will be a=[1,1,0]a=[1,1,0] which has gcdgcd equals to 11.</li>
+<li>If we delete the nodes in order 3→1→23→1→2, then the obtained sequence will be a=[1,0,1]a=[1,0,1] which has gcdgcd equals to 11.</li>
+<li>If we delete the nodes in order 2→3→12→3→1 or 3→2→13→2→1, then the obtained sequence will be a=[0,1,1]a=[0,1,1] which has gcdgcd equals to 11.</li>
+</ul>
+<p>Note that here we are counting the number of different sequences, not the number of different orders of deleting nodes.</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/12/hn-train/">
+                        <span class="hidden-mobile">湖南多校训练汇总</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0/dist/katex.min.css" />
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
